@@ -58,11 +58,7 @@
                       <v-text-field v-model="editedItem.alert_quantity" label="Alert Quantity"></v-text-field>
                     </v-col>
                     <v-col cols="12" sm="6" md="4">
-                      <v-select
-                        v-model="editedItem.productCategory"
-                        :items="items"
-                        label="Category"
-                      ></v-select>
+                      <v-select v-model="editedItem.productCategory" label="Category"></v-select>
                     </v-col>
                   </v-row>
                 </v-container>
@@ -133,10 +129,10 @@ export default {
   computed: {
     formTitle() {
       return this.editedIndex === -1 ? "New Item" : "Edit Item";
-    },
-    items() {
-      return ["Book", "Electronic", "Food"];
     }
+    // items() {
+    //   return ["Book", "Electronic", "Food"];
+    // }
   },
   watch: {
     dialog(val) {

@@ -6,8 +6,8 @@
     <v-btn class="ma-2" outlined color="indigo">Import Purchase</v-btn>
     <v-data-table
       :headers="headers"
-      :items="purchase"
-      class="mytable elevation-12 mt-10"
+      :items="products"
+      class="elevation-12"
       :loading="loading"
       loading-text="Loading... Please wait"
       :search="search"
@@ -102,39 +102,45 @@ export default {
       { text: "Price", value: "price" },
       { text: "Quantity", value: "quantity" },
       { text: "ProductCost", value: "productCost" },
-      { text: "Alert Quantity", value: "alert_quantity" },
+      { text: "ShippingCost", value: "shippingCost" },
+      { text: "GrandTotal", value: "grandTotal" },
+      { text: "shippingCost", value: "shippingCost" },
       { text: "Actions", value: "action", sortable: false }
     ],
     products: [],
     editedIndex: -1,
     editedItem: {
-      image: "",
-      name: "",
-      brand: "",
-      productCategory: "",
+      date: "",
+      referenceNo: "",
+      supplierName: "",
+      items: "",
       code: 0,
       price: 0,
       quantity: 0,
-      alert_quantity: 0
+      productCost: 0,
+      shippingCost: 0,
+      grandTotal: 0
     },
     defaultItem: {
-      image: "",
-      name: "",
-      brand: "",
-      productCategory: "",
+      date: "",
+      referenceNo: "",
+      supplierName: "",
+      items: "",
       code: 0,
       price: 0,
       quantity: 0,
-      alert_quantity: 0
+      productCost: 0,
+      shippingCost: 0,
+      grandTotal: 0
     }
   }),
   computed: {
     formTitle() {
       return this.editedIndex === -1 ? "New Item" : "Edit Item";
-    },
-    items() {
-      return ["Book", "Electronic", "Food"];
     }
+    // items() {
+    //   return ["Book", "Electronic", "Food"];
+    // }
   },
   watch: {
     dialog(val) {
@@ -148,34 +154,17 @@ export default {
     initialize() {
       this.products = [
         {
-          image: this.myimg,
-          name: "Book",
-          category: "Electronic",
+          date: "10-10-2019",
+          referenceNo: "ref1",
+          supplierName: "Tanzil",
+          items: "5",
           brand: "Sony",
           code: 1234,
           price: "123 USD",
           quantity: 120,
-          alert_quantity: 10
-        },
-        {
-          image: this.myimg,
-          name: "Book",
-          category: "Electronic",
-          brand: "Sony",
-          code: 1234,
-          price: "123 USD",
-          quantity: 120,
-          alert_quantity: 10
-        },
-        {
-          image: this.myimg,
-          name: "Book",
-          category: "Electronic",
-          brand: "Sony",
-          code: 1234,
-          price: "123 USD",
-          quantity: 120,
-          alert_quantity: 10
+          productCost: 5000,
+          shippingCost: 500,
+          grandTotal: 120
         }
       ];
     },
